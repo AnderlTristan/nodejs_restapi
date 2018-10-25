@@ -5,7 +5,7 @@ const morgan = require('morgan');
 const mysql = require('mysql');
 const bodyParser = require('body-parser');
 const router = require('./routes/user.js');
-const port = 8080;
+const PORT = process.env.PORT || 8080;
 
 app.use(express.static('./public'));
 app.use(morgan('short'));
@@ -20,8 +20,8 @@ function sqlConnection() {
     });
 }
 
-app.listen(port, () => {
-    console.log("Our server is listening on " + port + "...");
+app.listen(PORT, () => {
+    console.log("Our server is listening on " + PORT + "...");
 });
 
 app.all("/", (req, res) => {
